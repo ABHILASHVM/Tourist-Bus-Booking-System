@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Package Booking</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #dcf3f7;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333333;
+      padding: 20px 0;
+    }
+
+    .container {
+      padding: 10%;
+    }
+    .form-section {
+      display: none;
+      height: 800px;
+    }
+    .form-section.current {
+      display: block;
+    }
+    .btn-section {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+
+    }
+.formm{
+    background-color: white;
+    width:50%;
+    height:600px;
+    margin-left:25%;
+
+}
+.go-back-btn {
+      display: block;
+      margin-top: 20px;
+      text-align: center;
+    }
+
+  </style>
+</head>
+<body>
+  <%if (sucess && sucess != ''){%>
+  <div class="alert alert-success" role="alert"></div>
+  <%=sucess%> 
+ </div>
+  <%}else if(err && err != '') {%>
+  <div class="alert alert-danger" role="alert">
+  <%=err%>
+  <%}%>
+
+
+    
+    <section class="formm">
+<form  action="/package_booking/<%= details.phone %>" method="post" enctype="multipart/form-data">
+  <div class="container"style="margin-top:30%">
+    <div id="travelersForm" class="form-section current">
+      <br><br><br><br>
+      <h2>Travaller Details</h2>
+      <div id="travelersContainer">
+        <div class="form-group traveler">
+          <% if(details!=null) { %>
+          <label>Registered email:</label>
+          <input type="email" id="name" name="email" class="form-control" value="<%=details.email%>" readonly>
+          <div class="error-message" id="emailError"></div>
+          <% } %>
+      </div>
+      </div>
+      <label>Count of Peoples:</label>
+     <input name="count" type="number" id="count" name="name" class="form-control" oninput="calculates();" required>
+     
+      <div class="btn-section"><a href="http://localhost:3000/account/<%= details.phone%>">
+        <button type="button" class="btn btn-secondary"id="prevBtn" >Previous</button>
+        </a>
+        <button type="button" class="btn btn-primary" id="nextBtn" onclick="showpackageForm()">Next</button>
+      </div></div>
+
+    
+    <div id="packageForm" class="form-section" style="margin-top: -5%;">
+      <br><br><br><br>
+      <h2>Package Details</h2>
+      <div class="form-group">
+        <label for="packageName">Package Name:
+          <% if(pack!=null) { %>
+        <input type="text" list="packages" name="packname" value="<%=pack.packname%>" id="packageName" class="form-control" oninput="calculates();"  readonly></label>
+        <% } %> 
+        <!-- <datalist id="packages">
+  <option value="agra">
+  <option value="manali">
+  <option value="ooty">
+  <option value="kerala">
+    <option value="coorg">
+  
+</datalist> -->
+      
+       
+
+<!--<div>
+<a href="/package_booking">Get Details</a>
+</div>
+<hr>
+
+{{#if details }}
+<table>
+<tr>
+    <th>price</th>
+    <th>amount</th>
+</tr>
+{{#each details}}
+<tr>
+    <td>{{ this.price }}</td>
+    <td>{{ this.count }}*{{this.price}}</td>
+</tr>
+ {{/each}}
+</table>
+{{/if}}-->
+
+
+        
+        </div>
+      <div class="form-group">
+        <label for="price">Price:</label>
+        <input type="number" name="price"  id="price" class="form-control" value="<%=pack.price%>" oninput="calculates();" readonly>
+      </div>
+        <div class="btn-section">
+        <button type="button" class="btn btn-secondary" id="prevBtn">Previous</button>
+        <button type="button" class="btn btn-primary" id="nextBtn" onclick="calculates();">Next</button>
+      </div>
+    </div>
+    <div id="paymentForm" class="form-section" style="margin-top: -5%;">
+  <h2>Payment Details</h2>
+ 
+  <!-- <div class="form-group">
+    <label for="paytm-phone">Paytm Mobile Number</label>
+    <input type="tel" name="number" id="paytm-phone" class="form-control" name="paytm-phone" oninput="calculates();" required>
+  </div> -->
+  
+  
+  <div class="form-group">
+    <label for="paytm-amount">Amount</label>
+    <input type="text" name="amount" id="paytm-amount" class="form-control" name="paytm-amount" readonly>
+  </div>
+  <div class="payment-methods">
+    <label>
+      <input type="radio" name="payment-method" value="paytm" oninput="calculates();" checked>
+      Scan and Pay
+    </label>
+  <div class="form-group" >
+    <img width="100px"  src="/qr.jpg">
+  </div>
+  <div class="mb-3">
+    <label for="paytm-amount">Payment Screenshot</label>
+    <input type="file" name="single_input" class="form-control" >
+  </div>
+  <div class="form-group">
+    <label for="paytm-amount">Transaction ID</label>
+    <input type="text" name="id" id="id1" class="form-control" >
+  </div>
+  
+   <div class="btn-section">
+        <button type="button" class="btn btn-secondary" id="prevBtn">Previous</button>
+        <button type="button" class="btn btn-primary" id="nextBtn" onclick="calculates();">Next</button>
+      </div>
+  <a href="<%= details.phone %>" class="go-back-btn">Go Back</a>
+</div>
+</div>
+
+
+ <div id="confirmForm" class="form-section" style="margin-top: -5%;">
+  <h2>Confirm Details</h2>
+ <hr>
+
+
+<table border="5px" align="center">
+<tr>
+      
+     <th>email</th>
+     <th>count</th>
+     <th>package</th>
+     <th>price</th>
+     <th>amount</th>
+     <th>trans ID</th>
+
+<tr>
+  
+    <td id="row1"></td>
+    <td id="row2"></td>
+    <td id="row3"></td>
+    <td id="row4"></td>
+    <td id="row5"></td>
+    <td id="row6"></td>
+    <td id="row7"></td>
+</tr>
+
+</table>
+
+  <button class="btn btn-primary" type="submit" onclick="submitPaytmForm();">Proceed to Payment</button>
+  <a href="<%= details.phone %>" class="go-back-btn">Go Back</a>
+</div>
+</div>
+
+
+
+</form>
+    
+</section>
+ 
+
+  <script>
+
+    
+     function calculates() {
+       var email = document.getElementById('name').value; 
+        var count = document.getElementById('count').value; 
+        var myBox = document.getElementById('packageName').value;
+       var di = document.getElementById('id1').value; 
+       
+        
+         
+        var row1 = document.getElementById('row1'); 
+      /*  if(myBox=="agra")
+            document.getElementById('price').value = 5999;
+            if(myBox=="kerala")
+            document.getElementById('price').value = 5999;
+        if(myBox=="manali")
+            document.getElementById('price').value = 10999;
+        if(myBox=="coorg")
+            document.getElementById('price').value = 10999;
+        if(myBox=="ooty")
+            document.getElementById('price').value = 5999;*/
+        
+         var price = document.getElementById('price').value;
+        //  var phone = document.getElementById('paytm-phone').value;
+         var amount = document.getElementById('paytm-amount').value; 
+         
+
+        var myResult = count * price;
+          document.getElementById('paytm-amount').value = myResult;
+   
+           row1.innerHTML = email;
+           row2.innerHTML = count;
+           row3.innerHTML = myBox;
+           row4.innerHTML = price+"rs";
+          // row5.innerHTML = phone;
+           row5.innerHTML = amount+"rs";
+           row6.innerHTML = di;
+
+    }
+
+
+     function calculate() {
+       var myBox1 = document.getElementById('price').value;
+      var row1 = document.getElementById('row1'); 
+             row1.innerHTML = myBox1;
+     }
+
+    const travelersForm = document.getElementById("travelersForm");
+    const nameInput = document.getElementById("name");
+    const confirmForm = document.getElementById("confirmForm");
+    const packageForm = document.getElementById("packageForm");
+    const paymentForm = document.getElementById("paymentForm");
+    const prevButtons = document.querySelectorAll("#prevBtn");
+    const nextButtons = document.querySelectorAll("#nextBtn");
+    //const addTravelerBtn = document.getElementById("addTravelerBtn");
+    const travelersContainer = document.getElementById("travelersContainer");
+   // var i=0;
+  
+    // Add event listeners for input changes
+    nameInput.addEventListener("input", validateForm);
+    function validateForm() {
+      // Validate inputs
+      const name = nameInput.value.trim();
+      // Validate name input
+      if (name === "") {
+        nameInput.classList.add("invalid");
+        document.getElementById("nameError").textContent = "Name is required";
+      } else {
+        nameInput.classList.remove("invalid");
+        document.getElementById("nameError").textContent = "";
+      }
+    }
+    function showpackageForm() {
+        if (travelersForm.checkValidity()) {
+        nextBtn.classList.add("active");
+        nextBtn.removeAttribute("disabled");
+    
+        var travelersForm = document.getElementById("travelersForm");
+        var packageForm = document.getElementById("packageForm");
+        var travelersForm = document.getElementById("confirmForm");
+        packageForm.classList.add("show");
+        travelersForm.style.display = "none";
+        }
+        else {
+        nextBtn.classList.remove("active");
+        nextBtn.setAttribute("disabled", "disabled");
+        }
+
+      }
+
+    // Event listener for Add Traveler button
+    /*addTravelerBtn.addEventListener("click", function() {
+      
+        i=i+1;
+       if(i<=5)
+      {
+      
+      const travelerDiv = document.createElement("div");
+      travelerDiv.classList.add("form-group", "traveler");
+      
+      
+        
+      
+        
+        
+       
+      if(i==1)
+      {
+      travelerDiv.innerHTML = `
+        <label>Name:</label>
+        <input type="text" name="name1" class="form-control" required>
+      `;
+      }
+      if(i==2)
+      {
+      travelerDiv.innerHTML = `
+        <label>Name:</label>
+        <input type="text" name="name2" class="form-control" required>
+      `;
+      }
+      if(i==3)
+      {
+      travelerDiv.innerHTML = `
+        <label>Name:</label>
+        <input type="text" name="name3" class="form-control" required>
+      `;
+      }
+      if(i==4)
+      {
+      travelerDiv.innerHTML = `
+        <label>Name:</label>
+        <input type="text" name="name4" class="form-control" required>
+      `;
+      }
+      if(i==5)
+      {
+      travelerDiv.innerHTML = `
+        <label>Name:</label>
+        <input type="text" name="name5" class="form-control" required>
+      `;
+      }
+     
+      
+      travelersContainer.append(travelerDiv);
+
+      }
+    });*/
+
+    // Event listeners for Next buttons
+    nextButtons.forEach(button => {
+      button.addEventListener("click", function() {
+        const currentSection = this.closest(".form-section");
+        const nextSection = currentSection.nextElementSibling;
+
+        currentSection.classList.remove("current");
+        nextSection.classList.add("current");
+      });
+    });
+
+    // Event listeners for Previous buttons
+    prevButtons.forEach(button => {
+      button.addEventListener("click", function() {
+        const currentSection = this.closest(".form-section");
+        const prevSection = currentSection.previousElementSibling;
+
+        currentSection.classList.remove("current");
+        prevSection.classList.add("current");
+      });
+    });
+
+    // Form submission
+    paymentForm.addEventListener("submit", function(e) {
+      e.preventDefault();
+      // Perform payment processing logic here
+      alert("Payment successful!");
+      // Reset the form
+      travelersForm.reset();
+      packageForm.reset();
+      paymentForm.reset();
+      // Remove added travelers
+      const addedTravelers = document.querySelectorAll(".traveler");
+      addedTravelers.forEach(traveler => {
+        traveler.parentNode.removeChild(traveler);
+      });
+      // Reset form sections
+      travelersForm.classList.add("current");
+      packageForm.classList.remove("current");
+      paymentForm.classList.remove("current");
+      confirmForm.classList.remove("current");
+    });
+  </script>
+</body>
+</html>

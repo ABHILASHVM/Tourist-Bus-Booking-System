@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agra package</title>
+    <link href="/css/style1.css" rel="stylesheet">
+    <style>
+     
+        body{
+            background-color: #dcf3f7;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+            box-sizing: border-box;
+            
+        }
+        .image img{
+    display: inline-flex;
+          vertical-align: top;
+          position: relative;
+          width: 50px;
+          height: 50px;
+          margin-left: 10%;
+          margin-top: 15px; 
+          opacity: 90%;  
+          border:1px solid black;
+          border-radius: 50px;
+  }
+  .containerr {
+    width: 10%;
+    align-items: center;
+    justify-content: center;
+  }
+  .textt {
+   position: absolute;
+   margin-left:5.5%;
+   margin-top:-5%;
+  }
+  .go-btn{
+    background-color: #3e52e4; 
+        border-radius: 5px;
+        color: white; 
+        border: none;
+        padding: 9px 10px; 
+        font-size: 14px; 
+        cursor: pointer; 
+ }
+ .go-btn:hover{
+    color:black;
+    transition: 0.7;
+ }
+ h1 {
+      text-align: center;
+      color: #333333;
+    }
+
+    .main-body img{
+        width:3%;
+        height: auto;
+        margin-left: 27%;
+        margin-top: 3%;
+    }
+    </style>
+</head>
+<body>
+    <div>
+      <div class="containerr">
+        <div class="image">
+          <img src="/css/images/logo.jfif">
+        </div>
+        <div class="textt">
+            <h1 style="font-size: 32px;">Travel</h1>
+        </div>
+    </div>
+    <div style="text-align: right ;margin-top: -3.3%;margin-right:1.5%">
+      <a href="http://localhost:3000/account/<%= details.phone%>">
+          <button class="go-btn">Back</button>
+      </a>
+  </div>
+  <h1 style="text-decoration: underline;">Agra tour package</h1>
+        <div class="carousel">
+          <ul class="slides">
+            <input type="radio" name="radio-buttons" id="img-1" checked />
+            <li class="slide-container">
+              <div class="slide-image">
+                <img src="/css/images/Agra/thaj mahal.jpg">
+              </div>
+              <div class="carousel-controls">
+                <label for="img-3" class="prev-slide">
+                  <span>&lsaquo;</span>
+                </label>
+                <label for="img-2" class="next-slide">
+                  <span>&rsaquo;</span>
+                </label>
+              </div>
+            </li>
+            <input type="radio" name="radio-buttons" id="img-2" />
+            <li class="slide-container">
+              <div class="slide-image" style="width:100%;">
+                <img src="/css/images/Agra/agra_fort1.jpg">
+              </div>
+              <div class="carousel-controls">
+                <label for="img-1" class="prev-slide">
+                  <span>&lsaquo;</span>
+                </label>
+                <label for="img-3" class="next-slide">
+                  <span>&rsaquo;</span>
+                </label>
+              </div>
+            </li>
+            <input type="radio" name="radio-buttons" id="img-3" />
+            <li class="slide-container">
+              <div class="slide-image">
+                <img src="/css/images/Agra/india_gate.jpg">
+              </div>
+              <div class="carousel-controls">
+                <label for="img-2" class="prev-slide">
+                  <span>&lsaquo;</span>
+                </label>
+                <label for="img-1" class="next-slide">
+                  <span>&rsaquo;</span>
+                </label>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <section>
+        <div class="main-body">
+          <img src="/css/images/icons/location.png" >
+          <h3 style="margin-left: 31%; margin-top: -2%;">Delhi,India</h3>
+        </div>
+        <div class="main-body">
+          <img src="/css/images/icons/clock.png" >
+          <h3 style="margin-left: 31%; margin-top: -2%;">2 nights/3 days</h3>
+        </div>
+        <div class="main-body" style="margin-left: 40%;margin-top: -13%;">
+          <img src="/css/images/icons/price.png" >
+          <h3 style="margin-left: 32%; margin-top: -2%;">price Rs 5,999</h3>
+        </div>
+        
+         
+        </div>
+      </section>
+
+      <section class="faqs" id="Faqs">
+        <div style="    width: 65%;border: none;margin-left: 15%;margin-top:10%;background-color: white;">
+ <details>
+   <summary>Day 1: Delhi to Agra</summary>
+   <p><ul>
+    <li>On arrival in Delhi, proceed to Agra.</li>
+    <li>On arrival in Agra, check in to the hotel.</li>
+    <li>Later, visit Agra Fort and enjoy the sunset view of Taj Mahal.</li>
+    <li>Overnight stay at Agra.</li>
+  </ul>
+  
+  </p>	 
+ </details>
+ <details>
+  <summary>Day 2. Agra to Jaipur </summary>
+  <p>
+    <ul>
+   <li>After breakfast, proceed to Jaipur.</li>
+   <li>On arrival in Jaipur, check in to the hotel.</li>
+   <li>Later, visit City Palace, Hawa Mahal, and Jantar Mantar Observatory.</li>
+   <li>Enjoy a stroll through the colorful bazaar.</li>
+   <li>Return to the hotel.</li>
+   <li>In the evening, enjoy dance and dinner at a local Rajasthani restaurant. </ul>
+    <li> Overnight stay at Jaipur.</li>
+    </ul>
+ </p>
+ </details>
+ <details>
+  <summary>Day 3. Departure</summary>
+  <p><ul>
+   <li>After breakfast, visit india gate.</li>
+   <li>Later, drive to Delhi airport for your onward journey back home.</li>
+ </ul>
+ 
+ </p>
+ </details>
+</div>
+    </section>
+  
+   <div style="margin-left: 42%;margin-bottom: 5%;">
+    <a href="/package1/package_booking/<%=details.phone%>" class="btn btn-lg">Book Now</a>
+   </div>
+   
+</body>
+</html>

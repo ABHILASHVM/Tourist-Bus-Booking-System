@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="/css/style2.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>Admin page</title>
+    <style>
+        body{
+            background: rgb(36,198,224);
+      background: linear-gradient(90deg, rgba(36,198,224,1) 2%, rgba(29,130,215,1) 36%, rgba(64,56,180,1) 84%, rgba(136,0,255,1) 100%);
+      
+        }
+        .image img{
+        display: inline-flex;
+        vertical-align: top;
+        position: relative;
+        width: 50px;
+        height: 50px;
+        margin-left: 10%;
+        margin-top: 15px; 
+        opacity: 90%;  
+        border:1px solid black;
+        border-radius: 50px;
+    }
+    .containerr {
+        width: 10%;
+        align-items: center;
+        justify-content: center;
+    }
+    .textt {
+        position: absolute;
+        margin-left:5.5%;
+        margin-top:-5%;
+    }
+    .go-btn{
+        background-color: #f80a0a; 
+        border-radius: 5px; 
+        border: none;
+        
+         padding: 9px 10px;  
+        font-size: 14px; 
+        cursor: pointer; 
+ }
+ .go-btn:hover{
+        color:rgb(7, 49, 108);
+        box-shadow:3px 3px 0px black;
+        transition: 0.7;
+ }
+
+ .co-btn{
+        background-color: #1a0af8; 
+        border-radius: 5px; 
+        border: none;
+        /* padding: 9px 10px;  */
+        font-size: 14px; 
+        cursor: pointer; 
+ }
+ .co-btn:hover{
+        color:rgb(7, 49, 108);
+        box-shadow:3px 3px 0px black;
+        transition: 0.7;
+ }
+ .error-message{
+        color: red;
+        font-size: 12px;
+        margin-top: 5px;
+  }
+
+  .textt h1{
+    margin-top: 25%;
+    font-size: 32px;
+  }
+
+  .backk{
+    text-align: right;
+    margin-top: -3.3%;
+    margin-right:1.5%;
+  }
+
+
+    </style>
+</head>
+<body>
+
+  <section class="hero">
+    <div class="overlay">
+        <nav class="navbar">
+            <img class="logo" src="/css/images/logo.jfif">
+            <p class="logoname">TRAVEL</p>
+            <% if(details!=null) { %>
+               
+               <ul>
+                   <li><a href="#packages">Packages</a></li>
+                   <li><a href="#users">Users</a></li>
+                   <li><a href="#pack-booking">Package Bookings</a></li>
+                   <li><a href="#bus-booking">Bus Bookings</a></li>
+                   <li><a href="#feedbacks">feedbacks</a></li>
+                   <a href="http://localhost:3000/admLogin">
+                   <button class="go-btn btn btn-danger">log out</button>
+                   </a>
+                   <!-- <a href="/mypage/<%= details.phone %>" class="btn btn-primary btn-lg" id="login-button" style="font-size: 15px;border-radius: 100%;">A</a> -->
+                   
+               </ul>
+               
+                   <% } %>
+       </nav>
+    </div>
+</section>
+   
+  <h1 style="padding: 20px;">Admin Page....!</h1>
+
+  <div class="container mt-4" id="packages">
+    <h2>Packages</h2>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>package id</th>
+          <th>package Name</th>
+          <th>price</th>
+          
+        </tr>
+      </thead>
+      <tbody id="bookingDetails">
+        <!-- Dynamically populate this section using JavaScript -->
+        <% if(pack!=null) { %>
+          <% pack.forEach(function(item){ %>
+          <tr>
+              <td><%= item.name %></td>
+              <td><%= item.packname %></td>
+              <td><%= item.price %></td>
+              <td><a href="/package/edit/<%= item.name %>"><button type="button" class="btn btn-primary co-btn">edit</button></a></td>
+             
+          
+          </tr>
+          <% }) %>
+          <% } %>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="container mt-4" id="pack-booking">
+    <h2>Booked Package Details</h2>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Booking ID</th>
+          <th>User Name</th>
+          <th>Package Name</th>
+          <th>Amount</th>
+          <th>Screenshot</th>
+          <th>Trans id</th>
+          
+        </tr>
+      </thead>
+      <tbody id="bookingDetails">
+        <!-- Dynamically populate this section using JavaScript -->
+        <% if(package!=null) { %>
+          <% package.forEach(function(item){ %>
+          <tr>
+              <td><%= item._id %></td>
+              <td><%= item.email %></td>
+              <td><%= item.packname %></td>
+              <td><%= item.amount %></td>
+              <div >
+                <td><img height="130px" src="/payments/<%= item.picture %>" alt=""></td>
+                </div>
+              <td><%= item.id %></td>
+              
+              <td><a href="/package/delete/<%= item._id %>"><button type="button" class="go-btn btn-danger">delete</button></a></td>
+          
+          </tr>
+          <% }) %>
+          <% } %>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="container mt-4" id="bus-booking">
+    <h2>Bus Booking Details</h2>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Booking ID</th>
+          <th>Email ID</th>
+          <th>destination</th>
+          <th>Date</th>
+          <th>days</th>
+          <th>requirements</th>
+          <th>amount</th>
+          <th>screnshot</th>
+          <th>trans ID</th>
+        </tr>
+      </thead>
+      <tbody id="bookingDetails">
+        <!-- Dynamically populate this section using JavaScript -->
+        <% if(bus!=null) { %>
+          <% bus.forEach(function(item){ %>
+          <tr>
+             
+              <td><%= item._id %></td>
+              <td><%= item.email %></td>
+              <td><%= item.destinations %></td>
+              <td><%= item.date %></td>
+              <td><%= item.days %></td>
+              <td><%= item.requirements %></td>
+              <td><%= item.amount %></td>
+              <td><img height="130px" src="/payments/<%= item.picture %>" alt=""></a></td>
+              <td><%= item.id %></td>
+              <td><a href="/bus/delete/<%= item._id %>"><button type="button" class="go-btn btn-danger">delete</button></a></td>
+
+          
+          </tr>
+          <% }) %>
+          <% } %>
+      </tbody>
+    </table>
+  </div>
+
+
+ 
+
+  <div class="container mt-4" id="users">
+    <h2>Login User Details</h2>
+   
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>User ID</th>
+          <th>User Name</th>
+          <th>Email</th>
+          <th>Phone</th>
+        </tr>
+      </thead>
+      <tbody id="userDetails">
+        <!-- Dynamically populate this section using JavaScript -->
+        <% if(details!=null) { %>
+          <% details.forEach(function(item){ %>
+          <tr>
+            
+              <td><%= item._id %></td>
+              <td><%= item.name %></td>
+              <td><%= item.email %></td>
+              <td><%= item.phone %></td>
+              
+              <td> <a href="/edit/<%= item.phone %>">
+                <button type="button" class="btn btn-primary co-btn">edit</button></td>
+              </a></td>
+              <td><a href="/user/delete/<%= item._id %>"><button type="button" class="btn btn-danger go-btn">delete</button></a></td>
+            
+          </tr>
+          <% }) %>
+          <% } %>
+  </table>
+    
+
+      </tbody>
+    </table>
+  </div>
+
+  <div class="container mt-4" id="feedbacks">
+    <h2>Feedback</h2>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>User Name</th>
+          <th>Contact no</th>
+          <th>Feedback</th>         
+        </tr>
+      </thead>
+      <tbody id=" feedbackDetails">
+        <!-- Dynamically populate this section using JavaScript -->
+        <% if(feedback!=null) { %>
+          <% feedback.forEach(function(item){ %>
+          <tr>
+            <form method="post" action="/feedback/delete/<%= item._id %>?_method=delete">
+              <input type="hidden" name="_method" value="DELETE" >
+              <td><%= item.name %></td>
+              <td><%= item.contact %></td>
+              <td><%= item.feedback %></td>
+              <td><a href="/feedback/delete/<%= item._id %>"><button type="button" class="btn btn-danger go-btn">Resolved</button></a></td>
+             </form>
+            </tr>
+          <% }) %>
+          <% } %>
+      </tbody>
+    </table>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</body>
+</html>

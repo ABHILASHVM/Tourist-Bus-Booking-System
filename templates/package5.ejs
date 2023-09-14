@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>coorg package</title>
+    <link href="css/style1.css" rel="stylesheet">
+    <style>
+     
+        body{
+            background-color: #dcf3f7;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+            box-sizing: border-box;
+            
+        }
+        .image img{
+    display: inline-flex;
+          vertical-align: top;
+          position: relative;
+          width: 50px;
+          height: 50px;
+          margin-left: 10%;
+          margin-top: 15px; 
+          opacity: 90%;  
+          border:1px solid black;
+          border-radius: 50px;
+  }
+  .containerr {
+    width: 10%;
+    align-items: center;
+    justify-content: center;
+  }
+  .textt {
+   position: absolute;
+   margin-left:5.5%;
+   margin-top:-5%;
+  }
+  .go-btn{
+    background-color: #3e52e4; 
+        border-radius: 5px;
+        color: white; 
+        border: none;
+        padding: 9px 10px; 
+        font-size: 14px; 
+        cursor: pointer; 
+ }
+ .go-btn:hover{
+    color:black;
+    transition: 0.7;
+ }
+ h1 {
+      text-align: center;
+      color: #333333;
+    }
+
+    .main-body img{
+        width:3%;
+        height: auto;
+        margin-left: 27%;
+        margin-top: 3%;
+    }
+    </style>
+</head>
+<body>
+    <div>
+      <div class="containerr">
+        <div class="image">
+          <img src="css/images/logo.jfif">
+        </div>
+        <div class="textt">
+            <h1 style="font-size: 32px;">Travel</h1>
+        </div>
+    </div>
+    <div style="text-align: right ;margin-top: -3.3%;margin-right:1.5%">
+      <a href="http://localhost:3000/account/<%= details.phone%>">
+          <button class="go-btn">Back</button>
+      </a>
+  </div>
+  <h1 style="text-decoration: underline;">Coorg tour package</h1>
+        <div class="carousel">
+          <ul class="slides">
+            <input type="radio" name="radio-buttons" id="img-1" checked />
+            <li class="slide-container">
+              <div class="slide-image">
+                <img src="css/images/coorg/abbey-falls.jpg">
+              </div>
+              <div class="carousel-controls">
+                <label for="img-3" class="prev-slide">
+                  <span>&lsaquo;</span>
+                </label>
+                <label for="img-2" class="next-slide">
+                  <span>&rsaquo;</span>
+                </label>
+              </div>
+            </li>
+            <input type="radio" name="radio-buttons" id="img-2" />
+            <li class="slide-container">
+              <div class="slide-image" style="width:100%;">
+                <img src="css/images/coorg/raja-s-seat.jpg">
+              </div>
+              <div class="carousel-controls">
+                <label for="img-1" class="prev-slide">
+                  <span>&lsaquo;</span>
+                </label>
+                <label for="img-3" class="next-slide">
+                  <span>&rsaquo;</span>
+                </label>
+              </div>
+            </li>
+            <input type="radio" name="radio-buttons" id="img-3" />
+            <li class="slide-container">
+              <div class="slide-image">
+                <img src="css/images/coorg/madikeri-fort.jpg">
+              </div>
+              <div class="carousel-controls">
+                <label for="img-2" class="prev-slide">
+                  <span>&lsaquo;</span>
+                </label>
+                <label for="img-1" class="next-slide">
+                  <span>&rsaquo;</span>
+                </label>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <section>
+        <div class="main-body">
+          <img src="css/images/icons/location.png" >
+          <h3 style="margin-left: 31%; margin-top: -2%;">Karnataka,India</h3>
+        </div>
+        <div class="main-body">
+          <img src="css/images/icons/clock.png" >
+          <h3 style="margin-left: 31%; margin-top: -2%;">3 nights/4 days</h3>
+        </div>
+        <div class="main-body" style="margin-left: 40%;margin-top: -13%;">
+          <img src="css/images/icons/price.png" >
+          <h3 style="margin-left: 32%; margin-top: -2%;">price Rs 10,999</h3>
+        </div>
+        
+         
+        </div>
+      </section>
+
+      <section class="faqs" id="Faqs">
+        <div style="    width: 65%;border: none;margin-left: 15%;margin-top:10%;background-color: white;">
+ <details>
+   <summary>Day 1: Bangalore to Coorg</summary>
+   <p><ul>
+    <li>On arrival at Bangalore, proceed to Coorg. </li>
+    <li>On arrival in Coorg, check in to the resort & relax.</li>
+    <li>At 03:30 PM proceed to visit Abbey falls and Omkareshwara Temple At 06:30 PM visit Raja's Seat.</li>
+    <li> Return to the hotel.</li>
+    <li>Overnight stay at the hotel.</li>
+  </ul>
+  
+  </p>	 
+ </details>
+ <details>
+  <summary>Day 2: Coorg Sightseeing</summary>
+  <p>
+    <ul>
+   <li>After breakfast, proceed for a full day sightseeing in Coorg.</li>
+   <li> At 08:30 AM reach Dubare elephant camp for the 3-hour experience with elephants consisting of elephant grooming, feeding, elephant ride & coracle ride.</li>
+   <li>Later, visit Nisargadhama, and Cauvery Island. </li>
+   <li> Have lunch at Kushalnagar and visit Bylakuppe.</li>
+   <li>Return to the hotel.</li>
+   <li>Overnight stay at the hotel. </ul>
+    </ul>
+ </p>
+ </details>
+ <details>
+  <summary>Day 3: Visit Talacauvery</summary>
+  <p><ul>
+   <li>After breakfast, proceed to Talacauvery, also known as Dakshin Kashi.</li>
+   <li>After the visit, return to the hotel.</li>
+   <li>Spend the evening at leisure.</li>
+   <li> Overnight stay at the hotel.</li>
+ </ul>
+ 
+ </p>
+ </details>
+ <details>
+    <summary>Day 4: Departure</summary>
+    <p><ul>
+     <li>After breakfast, check out from the world and proceed to Bangalore. </li>
+     <li> On arrival in Bangalore, transfer to the railway station/airport for your onward journey back home.</li>
+     <li>Tour ends</li>
+   </ul>
+   
+   </p>
+   </details>
+</div>
+    </section>
+   <div style="margin-left: 42%;margin-bottom: 5%;">
+    <a href="/package5/package_booking/<%=details.phone%>" class="btn btn-lg">Book Now</a>
+   </div>
+
+</body>
+</html>

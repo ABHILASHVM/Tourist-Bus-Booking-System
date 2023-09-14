@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Tourist Bus Booking Agency</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="/css/style2.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+</head>
+<body>
+    <%if (sucess && sucess != ''){%>
+        <div class="alert alert-success" role="alert"></div>
+        <%=sucess%> 
+       </div>
+        <%}else if(err && err != '') {%>
+        <div class="alert alert-danger" role="alert">
+        <%=err%>
+        <%}%>
+	<section class="hero">
+        <div class="overlay">
+            <nav class="navbar">
+                <img class="logo" src="/css/images/logo.jfif">
+                <p class="logoname">TRAVEL</p>
+                <% if(details!=null) { %>
+                   
+                   <ul>
+                       <li><a href="#home">Home</a></li>
+                       <li><a href="#about-us">About</a></li>
+                       <li><a href="#Faqs">Faqs</a></li>
+                       <li><a href="/contact_us/<%= details.phone %>">Contact us</a></li>
+                     
+                       <a href="/mypage/<%= details.phone %>" class="btn btn-primary btn-lg" id="login-button" style="font-size: 15px;border-radius: 100%;">A</a>
+                       
+                   </ul>
+                   
+                       <% } %>
+           </nav>
+        </div>
+
+        
+		<div class="container" id="home" style="margin-top: -11%; margin-left: 17%;">
+			<div class="row">
+				<div class="contents">
+					<h1>Explore The World With Us</h1>
+					<p>Book your dream bus tour today and experience the journey of a lifetime.</p>
+					<a href="/bus_booking/<%= details.phone %>" class="btn btn-lg">Book Now</a>
+                </div>
+            </div>
+        </div>
+
+    </section>
+    
+    <section class="features">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4" style="margin-top: -1%;">
+                        <img src="/css/images/icons/discovericon.png" style="width:35%; ">
+                    <h2>Discover</h2>
+                    <p>Discover new destinations and explore the world in comfort with our luxurious buses.</p>
+                </div>
+                <div class="col-md-4">
+                    <div class="icon">
+                        <i class="fa fa-bus"></i>
+                    </div>
+                    <h2>Travel</h2>
+                    <p>Travel in style and comfort with our spacious, well-equipped buses and experienced drivers.</p>
+                </div>
+                <div class="col-md-4">
+                    <div class="icon">
+                        <i class="fa fa-users"></i>
+                    </div>
+                    <h2>Connect</h2>
+                    <p>Connect with other travelers and make new friends as you explore the world together.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="parts">
+        <h2 style="margin-left: -6%;">Packages</h2>
+        
+        <div class="cards">
+            <div class="image">
+                <img src="/css/images/agra/thaj mahal.jpg">
+            </div>
+            <div class="title">
+                Agra
+            </div>
+            <div class="des">
+               
+                <a href="/package1/<%=details.phone%>" >
+                    <button class="a">Read More..</button>
+                </a>
+                
+            </div>
+        </div>
+
+        <div class="cards">
+            <div class="image">
+                <img src="/css/images/kerala/Alappey.jpg">
+            </div>
+            <div class="title">
+                Kerala
+            </div>
+            <div class="des">
+                <a href="/package2/<%=details.phone%>">
+                    <button class="b">Read More..</button>
+                </a>
+            </div>
+        </div>
+
+        <div class="cards">
+            <div class="image">
+                <img src="/css/images/ooty/ooty.jpg">
+            </div>
+            <div class="title">
+                    Ooty
+            </div>
+            <div class="des">
+                <a href="/package3/<%=details.phone%>">
+                    <button class="b">Read More..</button>
+                </a>
+            </div>
+        </div>
+
+        <div class="cards">
+            <div class="image">
+                <img src="/css/images/manali/manali.jpg">
+            </div>
+            <div class="title">
+                Manali
+            </div>
+            <div class="des">
+                <a href="/package4/<%= details.phone%>">
+                    <button class="b">Read More..</button>
+                </a>
+            </div>
+        </div>
+
+        <div class="cards">
+            <div class="image">
+                <img src="/css/images/coorg/raja-s-seat.jpg">
+            </div>
+            <div class="title">
+                Coorg
+            </div>
+            <div class="des">
+                <a href="/package4/<%= details.phone%>">
+                    <button class="b">Read More..</button>
+                </a>
+            </div>
+        </div>
+       
+       
+    </section>
+
+    <section class="parts1">
+        <div class="cont">
+            <p> Book your favourite bus</p>
+            <a href="/bus_booking/<%= details.phone %>">
+            <button class="btn_1">Book Now</button>
+            </a>
+        </div>
+    </section>
+
+
+    <section class="boxx">
+        <div  style="text-decoration: underline;">
+            <h2>Testimonials</h2>
+        </div>
+    <div class="wrapper">
+        <div class="testimonial-container" id="testimonial-container"></div>
+        <button id="prev">&lt;</button>
+        <button id="next">&gt;</button>
+      </div>
+    </section>
+
+    
+    <section class="faqs" id="Faqs">
+        <h1>FAQs</h1>
+        <div style="    width: 50%;border: none;margin-left: 25%;margin-top:6%;background-color: white;">
+ <details>
+   <summary>How can I book a bus ticket?</summary>
+   <p>You can book a bus ticket by visiting our website and following the simple steps on the booking page.</p>	 
+ </details>
+ <details>
+   <summary>Can I cancel my bus ticket?</summary>
+   <p>Yes, you can cancel your bus ticket. Please contact us.</p>
+ </details>
+ <details>
+   <summary>What payment methods do you accept?</summary>
+   <p>We accept online paytm payment .</p>
+ </details>
+ <details>
+   <summary>How can I contact customer support?</summary>
+   <p>You can contact our customer support team through email on our website.</p>
+ </details>
+</div>
+    </section>
+
+      <!-- Script -->
+      <script src="/css/script.js"></script>
+    
+    <!-- About Us Section -->
+<section class="about-us" id="about-us">
+	<h2 class="about-us-heading">About Us</h2>
+	<p class="about-us-text">India Tourist Bus is a leading bus and package booking agency in India, dedicated to providing top-notch travel experiences to our customers. With our extensive network of trusted partners and our commitment to customer satisfaction, we strive to make travel easy, convenient, and affordable for everyone.</p>
+	<a href="#" class="cta-btn">Learn More</a>
+</section>
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+            <p>© 2023 Tourist Bus Booking Agency. All rights reserved.</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook logos"></i></a>
+                <a href="#"><i class="fab fa-twitter logos"></i></a>
+                <a href="#"><i class="fab fa-youtube logos"></i></a>
+                <a href="#"><i class="fab fa-instagram logos"></i></a>
+            </div>
+            </div>
+            </div>
+            </div>
+            </footer>
+    
+            <!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
